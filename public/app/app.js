@@ -5,6 +5,6 @@ document
   .querySelector("#myButton")
   .onclick = () =>
     service
-      .sumItens('2143')
+      .sumItems('2143')
       .then(console.log)
       .catch(console.log);

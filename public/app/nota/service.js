@@ -1,25 +1,36 @@
 import { handleStatus } from '../utils/promise_helpers.js';
-
+import { partialize } from '../utils/operators.js';
 const API = 'http://localhost:3000/notas';
 
-const sumItens = code => notas => 
-    notas.$flatMap(nota => nota.itens)
-    .filter(item => item.codigo == code)
-    .reduce((total, item) => total + item.valor, 0);
+const getitemsFromNotas = notas =>
+  notas.$flatMap(nota => nota.items);
+const filteritemsByCode = (code, items) =>
+  items.filter(item => item.codigo == code);
+const sumItemsValue = items =>
+  items.reduce((total, item) => total + item.valor, 0);
+
 
 export const notasService = {
 
-    listAll() {
+  listAll() {
 
-        return fetch(API)
-        .then(handleStatus)
-        .catch(err => {
-            console.log(err);
-            return Promise.reject('Não foi possível obter as notas fiscais');
-        });
-    },
-    sumItens(code) {
-        
-        return this.listAll().then(sumItens(code));
-    }
+    return fetch(API)
+      .then(handleStatus)
+      .catch(err => {
+        console.log(err);
+        return Promise.reject('Não foi possível obter as notas fiscais');
+      });
+  },
+  sumItems(code) {
+    const filterItems = partialize(filteritemsByCode, code);
+
+    return this.listAll()
+      .then(notas =>
+        sumItemsValue(
+          filterItems(
+            getitemsFromNotas(notas)
+          )
+        )
+      );
+  }
 };

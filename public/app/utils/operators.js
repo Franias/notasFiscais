@@ -10,6 +10,4 @@ export const pipe = (...fns) => value =>
     fn(previousValue), value);
 
 export const takeUntil = (times, fn) =>
-  () => {
-    if (times-- > 0)fn();
-  };
+  () => times-- > 0 && fn();

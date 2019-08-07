@@ -13,4 +13,4 @@ const operation = takeUntil(3, () =>
 
 document
   .querySelector("#myButton")
-  .onclick = operation();
+  .onclick = operation;

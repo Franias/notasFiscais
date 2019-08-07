@@ -12,3 +12,8 @@ export const pipe = (...fns) => value =>
 export const takeUntil = (times, fn) =>
   () => times-- > 0 && fn();
   //se primeiro verdadeiro chama a funcao, validando assim se for falso nem testa a funcao nem chega nela
+export const debounceTime = (milliseconds, fn) =>{
+  return () =>{
+    setTimeout(fn, milliseconds);
+  }
+}

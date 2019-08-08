@@ -1,16 +1,19 @@
-export const handleStatus = res => 
+export const handleStatus = res =>
     res.ok ? res.json() : Promise.reject(res.statusText);
 export const log = param => {
     console.log(param);
     return param;
 };
 
-export const timeOutPromise = (milliseconds, promise) =>{
-    const timeout = new Promise((promise, reject)=>
-    setTimeout(() => reject('Limite da promise excedido.'),
-    milliseconds));
+export const timeOutPromise = (milliseconds, promise) => {
+    const timeout = new Promise((promise, reject) =>
+        setTimeout(() => reject('Limite da promise excedido.'),
+            milliseconds));
 
     return Promise.race([
         timeout, promise
     ]);
 };
+export const delay = milliseconds => data =>
+    new Promise((resolve, reject) =>
+        setTimeout(() => resolve(data), milliseconds));

@@ -20,7 +20,8 @@ export class Maybe {
         return Maybe.of(fn(this._value));
     }
 
-    get(){
+    getOrElse(value){
+        if(this.isNothing()) return value;
         return this._value;
     }
 }

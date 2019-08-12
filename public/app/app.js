@@ -5,10 +5,10 @@ import { takeUntil, debounceTime, pipe, partialize } from './utils/operators.js'
 import { EventEmitter } from './utils/event-emitter.js'
 import { Maybe } from './utils/maybe.js';
 
-const value = Maybe.of(null)
-.map(value => value +10)
-.map(value=> value +30)
-.get();
+const value = Maybe.of(10)
+  .map(value => value + 10)
+  .map(value => value + 30)
+  .getOrElse(0);
 alert(value);
 
 // const maybe2 = new Maybe(null);

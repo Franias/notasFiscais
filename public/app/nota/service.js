@@ -4,8 +4,8 @@ import { Maybe } from './utils/maybe.js'
 
 const API = 'http://localhost:3000/notas';
 
-const getItemsFromNotas = notas =>
-  notas.$flatMap(nota => nota.items);
+const getItemsFromNotas = notasM =>
+  notasM.map(notas => notas.$flatMap(nota => nota.items);
 const filteritemsByCode = (code, items) =>
   items.filter(item => item.codigo == code);
 const sumItemsValue = items =>

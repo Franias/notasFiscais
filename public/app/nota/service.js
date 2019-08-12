@@ -31,7 +31,7 @@ export const notasService = {
       filterItems,
       sumItemsValue);
     return this.listAll()
-      .then(sumItems
-      );
+      .then(sumItems)
+      .then(result => result.getOrElse(0));
   }
 };

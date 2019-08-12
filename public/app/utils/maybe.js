@@ -19,4 +19,8 @@ export class Maybe {
 
         return Maybe.of(fn(this._value));
     }
+
+    get(){
+        return this._value;
+    }
 }

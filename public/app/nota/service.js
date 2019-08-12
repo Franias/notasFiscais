@@ -1,6 +1,6 @@
 import { handleStatus } from '../utils/promise_helpers.js';
 import { partialize, pipe } from '../utils/operators.js';
-import { Maybe } from './utils/maybe.js'
+import { Maybe } from '../utils/maybe.js'
 
 const API = 'http://localhost:3000/notas';
 
@@ -18,7 +18,7 @@ export const notasService = {
 
     return fetch(API)
       .then(handleStatus)
-      .then(notas => Maybe.of(notas))
+      .then(notas => Maybe.of(null))
       .catch(err => {
         console.log(err);
         return Promise.reject('Não foi possível obter as notas fiscais');

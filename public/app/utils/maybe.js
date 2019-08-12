@@ -15,7 +15,7 @@ export class Maybe {
     }
 
     map(fn){
-        if(this.isNothing) return Maybe.of(null);
+        if(this.isNothing()) return Maybe.of(null);
 
         return Maybe.of(fn(this._value));
     }

@@ -3,6 +3,10 @@ import './utils/array_helpers.js';
 import { notasService as service } from './nota/service.js';
 import { takeUntil, debounceTime, pipe, partialize } from './utils/operators.js'
 import { EventEmitter } from './utils/event-emitter.js'
+import { Maybe } from './utils/maybe.js';
+
+const maybe1 = Maybe.of(10);
+// const maybe2 = new Maybe(null);
 
 const operations = pipe(
   partialize(takeUntil, 3),

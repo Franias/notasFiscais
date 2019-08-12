@@ -19,6 +19,3 @@ document
   .querySelector("#myButton")
   .onclick = action;
 
-  EventEmitter.on('itensTotalizados', console.log);
-  EventEmitter.on('itensTotalizados', total=> alert(total));
-

@@ -5,11 +5,11 @@ import { Maybe } from './utils/maybe.js'
 const API = 'http://localhost:3000/notas';
 
 const getItemsFromNotas = notasM =>
-  notasM.map(notas => notas.$flatMap(nota => nota.items);
-const filteritemsByCode = (code, items) =>
-  items.filter(item => item.codigo == code);
-const sumItemsValue = items =>
-  items.reduce((total, item) => total + item.valor, 0);
+  notasM.map(notas => notas.$flatMap(nota => nota.items));
+const filteritemsByCode = (code, itemsM) =>
+  itemsM.map(items => items.filter(item => item.codigo == code));
+const sumItemsValue = itemsM =>
+  itemsM.map(items =>items.reduce((total, item) => total + item.valor, 0));
 
 
 export const notasService = {

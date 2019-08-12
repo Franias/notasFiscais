@@ -17,6 +17,6 @@ export class Maybe {
     map(fn){
         if(this.isNothing) return Maybe.of(null);
 
-        const value = fn(this._value);
+        return Maybe.of(fn(this._value));
     }
 }

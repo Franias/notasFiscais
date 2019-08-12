@@ -13,4 +13,10 @@ export class Maybe {
 
         return this._value == null || this._value == undefined;
     }
+
+    map(fn){
+        if(this.isNothing) return Maybe.of(null);
+
+        const value = fn(this._value);
+    }
 }

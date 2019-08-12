@@ -5,11 +5,9 @@ import { takeUntil, debounceTime, pipe, partialize } from './utils/operators.js'
 import { EventEmitter } from './utils/event-emitter.js'
 import { Maybe } from './utils/maybe.js';
 
-const maybe1 = Maybe.of(null);
+const maybe = Maybe.of(10);
 // const maybe2 = new Maybe(null);
-if(maybe1.isNothing()){
-  alert('oi')
-}
+
 const operations = pipe(
   partialize(takeUntil, 3),
   partialize(debounceTime, 500)
